@@ -1,0 +1,12 @@
+Migrate Flask project from Pycharm environemnt
+
+Step 1: generate requirements.txt. go to terminal in Pycharm, which is located at the bottom.
+        command: pip freeze >requirements.txt
+        
+Step 2:
+
+
+Install the dependencies:
+pip  install   -r requeirements.txt
+
+
