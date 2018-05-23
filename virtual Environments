@@ -1,0 +1,16 @@
+Setup a virtual environments using conda
+
+Requirement: anaconda python distribution installed and accessible
+
+1.Update conda:
+   conda update conda
+2.Create avirtual environment for your project 
+  conda create -n yourenvname python=x.x anaconda 
+3.Use virtual environment 
+  source activate yourenvname
+4.Install required packages 
+  conda install -n yourenvname packagename  
+5.Deactivate virtual environment
+  source deactivate 
+6.Delete the virtual environment
+  conda remove -n yourenvname -all
