@@ -9,3 +9,12 @@ Install the dependencies:
 pip  install   -r requeirements.txt
 
 
+Step 3: install gunicorn
+        pip install gunicorn
+        create wsgi.py
+                        from flask import Flask
+Step 4: install Nginx
+        $ sudo apt-get install apache2
+        $ sudo apt-get install libapache2-mod-wsgi
+
+
