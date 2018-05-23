@@ -5,7 +5,6 @@ Step 1: generate requirements.txt. go to terminal in Pycharm, which is located a
         
 Step 2:
 
-
 Install the dependencies:
 pip  install   -r requeirements.txt
 
