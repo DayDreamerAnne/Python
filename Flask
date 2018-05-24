@@ -1,20 +1,45 @@
-Migrate Flask project from Pycharm environemnt
+Run Flask project to production environemnt (AWS ec2)
 
 Step 1: generate requirements.txt. go to terminal in Pycharm, which is located at the bottom.
         command: pip freeze >requirements.txt
         
-Step 2:
+Step 2: Install virtualenvwrapper
+        pip install virtualenvwrapper
+        edit  .bashrc
+        source .bashrc
+        mkvirtualenv virtual_env_name
+        swich to another virtualenv: workon flaskapp
 
-Install the dependencies:
-pip  install   -r requeirements.txt
+Step 3:Install the dependencies:
+       pip  install   -r requeirements.txt
 
-
-Step 3: install gunicorn
+Step 4: install gunicorn (in virtual environment)
         pip install gunicorn
-        create wsgi.py
-                        from flask import Flask
-Step 4: install Nginx
-        $ sudo apt-get install apache2
-        $ sudo apt-get install libapache2-mod-wsgi
+        workon flaskapp
+        go to flask project folder
+        gunicorn -w 4 -b 0.0.0.0:8080 app:app (where the first app is the entrance of flask project e.g. app.py; the second is a flask instance)
+        
+Step 5: install Nginx (under ec2-user)
+        $ sudo yum install nginx
+        
+        sudo mkdir /etc/nginx/site-avalidable
+        vi site-avalidable/default.conf
+         add the following:
+         server {
+                listen 80 default_server;
+                listen [::]:80 default_server;
+
+                # 这是HOST机器的外部域名，用地址也行
+                server_name aws_public_dns;
+
+    l           ocation / {
+                # 这里是指向 gunicorn host 的服务地址
+                proxy_pass http://127.0.0.1:8080;
+                proxy_set_header Host $host;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                }
+                }
+        $ sudo service nginx restart
+                
 
 
