@@ -1,0 +1,6 @@
+pip install pymssql occurs errors: 
+     error: command 'gcc' failed with exit status 1
+
+
+using  python 2.7.15 and pip 18.0
+pip install git+https://github.com/pymssql/pymssql.git
