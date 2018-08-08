@@ -4,3 +4,9 @@ pip install pymssql occurs errors:
 
 using  python 2.7.15 and pip 18.0
 pip install git+https://github.com/pymssql/pymssql.git
+
+Another method
+     brew uninstall --force freetds
+     brew install freetds@0.91
+     brew link --force freetds@0.91
+     pip install pymssql
